@@ -12,26 +12,18 @@ import plotly.express as px
 
 
 
-def plot_univariate(df, col1, col2):
-    plt.figure(figsize = (12, 8))
+def plot_univariate(df:pd.DataFrame, x, title):
+    plt.figure(figsize=(12, 6))
+    sns.countplot(df, x=x)
+    plt.title(title)
+    plt.xticks(rotation=45)
+    plt.show()
 
-    plt.subplot(2, 2, 1)
-    plt.hist(df[col1], bins = 20, color = 'lavender', edgecolor = 'gray', linewidth = 0.5)
-    plt.title(f'Histogram of {col1}', size=14)
-
-    plt.subplot(2, 2, 2)
-    plt.boxplot(df[col1])
-    plt.title(f'Boxplot of {col1}', size=14)
-
-    plt.subplot(2, 2, 3)
-    plt.hist(df[col2], bins=20, color='lavender', edgecolor='gray', linewidth=0.5)
-    plt.title(f'Histogram of {col2}', size=14)
-    
-    
-    plt.subplot(2, 2, 4)
-    plt.boxplot(df[col2])
-    plt.title(f'Boxplot of {col2}', size=14)
-
+def bi_plot(df:pd.DataFrame, x_col:str, y_col:str, title:str, rotation=0):
+    plt.figure(figsize=(12, 6))
+    sns.countplot(data=df, x=x_col , hue = y_col)
+    plt.title(title)
+    plt.xticks(rotation=rotation)
     plt.show()
     
 def hist(sr):

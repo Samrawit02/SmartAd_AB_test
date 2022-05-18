@@ -14,7 +14,7 @@ import plotly.express as px
 
 def plot_univariate(df:pd.DataFrame, x, title):
     plt.figure(figsize=(12, 6))
-    sns.countplot(df, x=x)
+    sns.countplot(data=df, x=x)
     plt.title(title)
     plt.xticks(rotation=45)
     plt.show()
